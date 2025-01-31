@@ -28,7 +28,7 @@ public class TC01IfUserIsInvalidTryAgainTest
         options.AddArguments("disable-gpu");
         options.AddArguments("window-size=1920x1080");
 
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
         js = (IJavaScriptExecutor)driver;
         vars = new Dictionary<string, object>();
     }
@@ -36,8 +36,11 @@ public class TC01IfUserIsInvalidTryAgainTest
     [TearDown]
     protected void TearDown()
     {
-        driver.Quit();
-        driver.Dispose();
+        if (driver != null)
+        {
+            driver.Quit();
+            driver.Dispose();
+        }
     }
 
     [Test]
