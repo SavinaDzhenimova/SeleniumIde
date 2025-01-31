@@ -28,4 +28,6 @@ jobs:
     - name: Run tests
       env: 
         CHROMEWEBDRIVER: /usr/bin/google-chrome
-      run: dotnet test --verbosity normal
+      run: |
+        export DISPLAY=:99
+        dotnet test --verbosity normal
